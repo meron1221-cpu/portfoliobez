@@ -9,39 +9,15 @@ import {
   CollapsibleTrigger
 } from '@/components/ui/collapsible'
 import {
-  SiDocker,
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiTypescript,
-  SiReact,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiVuedotjs,
-  SiNodedotjs,
-  SiExpress,
-  SiPython,
-  SiPostgresql,
-  SiMongodb,
-  SiLaravel,
-  SiFlutter,
-  SiFirebase,
-  SiGit,
-  SiGithub,
-  SiJupyter,
-  SiCplusplus
-} from 'react-icons/si'
-import {
-  Award,
-  Star,
-  Target,
-  BookOpen,
   Download,
-  Code,
-  Brain,
-  Zap,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Building,
+  PenTool,
+  Camera,
+  Ruler,
+  Box,
+  Palette
 } from 'lucide-react'
 import { JSX, useEffect, useState, useRef, useCallback } from 'react'
 
@@ -50,164 +26,51 @@ interface Skill {
   icon: JSX.Element
   years: string
   proficiency: number // 0-100 scale
+  description: string
 }
 
-interface SkillCategory {
-  title: string
-  icon: JSX.Element
-  skills: Skill[]
-}
-
-const skillCategories: SkillCategory[] = [
+const skills: Skill[] = [
   {
-    title: 'Expert Proficiency',
-    icon: <Award className='h-5 w-5' />,
-    skills: [
-      {
-        name: 'JavaScript',
-        icon: <SiJavascript className='h-5 w-5' />,
-        years: '5+',
-        proficiency: 95
-      },
-      {
-        name: 'React',
-        icon: <SiReact className='h-5 w-5' />,
-        years: '4+',
-        proficiency: 90
-      },
-      {
-        name: 'TypeScript',
-        icon: <SiTypescript className='h-5 w-5' />,
-        years: '3+',
-        proficiency: 88
-      },
-      {
-        name: 'Next.js',
-        icon: <SiNextdotjs className='h-5 w-5' />,
-        years: '3+',
-        proficiency: 85
-      },
-      {
-        name: 'HTML',
-        icon: <SiHtml5 className='h-5 w-5' />,
-        years: '6+',
-        proficiency: 95
-      },
-      {
-        name: 'CSS',
-        icon: <SiCss3 className='h-5 w-5' />,
-        years: '6+',
-        proficiency: 90
-      },
-      {
-        name: 'Git',
-        icon: <SiGit className='h-5 w-5' />,
-        years: '5+',
-        proficiency: 92
-      },
-      {
-        name: 'GitHub',
-        icon: <SiGithub className='h-5 w-5' />,
-        years: '5+',
-        proficiency: 90
-      },
-      {
-        name: 'Laravel',
-        icon: <SiLaravel className='h-5 w-5' />,
-        years: '2+',
-        proficiency: 60
-      },
-      {
-        name: 'Tailwind CSS',
-        icon: <SiTailwindcss className='h-5 w-5' />,
-        years: '3+',
-        proficiency: 85
-      },
-      {
-        name: 'Node.js',
-        icon: <SiNodedotjs className='h-5 w-5' />,
-        years: '3+',
-        proficiency: 80
-      },
-      {
-        name: 'Express',
-        icon: <SiExpress className='h-5 w-5' />,
-        years: '2+',
-        proficiency: 68
-      },
-      {
-        name: 'MongoDB',
-        icon: <SiMongodb className='h-5 w-5' />,
-        years: '2+',
-        proficiency: 62
-      }
-    ]
+    name: 'Revit',
+    icon: <Building className='h-6 w-6' />,
+    years: '3+',
+    proficiency: 85,
+    description: 'Building Information Modeling (BIM) for architectural design'
   },
   {
-    title: 'Advanced Skills',
-    icon: <Star className='h-5 w-5' />,
-    skills: [
-      {
-        name: 'C++',
-        icon: <SiCplusplus className='h-5 w-5' />,
-        years: '3+',
-        proficiency: 78
-      },
-      {
-        name: 'PostgreSQL',
-        icon: <SiPostgresql className='h-5 w-5' />,
-        years: '2+',
-        proficiency: 78
-      },
-      {
-        name: 'Firebase',
-        icon: <SiFirebase className='h-5 w-5' />,
-        years: '2+',
-        proficiency: 72
-      },
-      {
-        name: 'Flutter',
-        icon: <SiFlutter className='h-5 w-5' />,
-        years: '2+',
-        proficiency: 70
-      }
-    ]
+    name: 'SketchUp',
+    icon: <PenTool className='h-6 w-6' />,
+    years: '4+',
+    proficiency: 90,
+    description: '3D modeling for architectural and interior design'
   },
   {
-    title: 'Intermediate Knowledge',
-    icon: <Target className='h-5 w-5' />,
-    skills: [
-      {
-        name: 'Python',
-        icon: <SiPython className='h-5 w-5' />,
-        years: '4+',
-        proficiency: 75
-      },
-      {
-        name: 'Docker',
-        icon: <SiDocker className='h-5 w-5' />,
-        years: '1+',
-        proficiency: 65
-      }
-    ]
+    name: 'Lumion',
+    icon: <Camera className='h-6 w-6' />,
+    years: '2+',
+    proficiency: 75,
+    description: '3D rendering and visualization software'
   },
   {
-    title: 'Currently Exploring',
-    icon: <BookOpen className='h-5 w-5' />,
-    skills: [
-      {
-        name: 'Jupyter',
-        icon: <SiJupyter className='h-5 w-5' />,
-        years: '<1',
-        proficiency: 40
-      },
-      {
-        name: 'Vue.js',
-        icon: <SiVuedotjs className='h-5 w-5' />,
-        years: '<1',
-        proficiency: 45
-      }
-    ]
+    name: 'AutoCAD',
+    icon: <Ruler className='h-6 w-6' />,
+    years: '5+',
+    proficiency: 88,
+    description: '2D and 3D CAD design and drafting'
+  },
+  {
+    name: '3ds Max',
+    icon: <Box className='h-6 w-6' />,
+    years: '2+',
+    proficiency: 70,
+    description: '3D modeling, animation, and rendering'
+  },
+  {
+    name: 'Adobe Creative Suite',
+    icon: <Palette className='h-6 w-6' />,
+    years: '4+',
+    proficiency: 82,
+    description: 'Photoshop, Illustrator, InDesign for design presentations'
   }
 ]
 
@@ -218,13 +81,23 @@ const ProficiencyBar = ({
   proficiency: number
   className?: string
 }) => {
+  const [width, setWidth] = useState(0)
+
+  useEffect(() => {
+    // Animate on mount
+    const timer = setTimeout(() => {
+      setWidth(proficiency)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [proficiency])
+
   return (
     <div
       className={`h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700 ${className}`}
     >
       <div
         className='h-full rounded-full bg-gray-900 transition-all duration-700 ease-out dark:bg-gray-100'
-        style={{ width: `${proficiency}%` }}
+        style={{ width: `${width}%` }}
       />
     </div>
   )
@@ -232,12 +105,7 @@ const ProficiencyBar = ({
 
 export default function Skills() {
   const [mounted, setMounted] = useState(false)
-  const [openCategories, setOpenCategories] = useState<boolean[]>([
-    false,
-    false,
-    false,
-    false
-  ])
+  const [openSkill, setOpenSkill] = useState<number | null>(null)
   const [syncedHeights, setSyncedHeights] = useState<{ [key: number]: number }>(
     {}
   )
@@ -254,73 +122,53 @@ export default function Skills() {
     }
   }, [])
 
-  // Function to measure and sync heights for each row independently
   const syncHeights = useCallback(() => {
-    // Group cards by row (each row has 2 cards in md:grid-cols-2)
-    const rows = [
-      [0, 1], // First row: indices 0 and 1
-      [2, 3] // Second row: indices 2 and 3
-    ]
-
     const newSyncedHeights: { [key: number]: number } = {}
 
+    // Group cards by row (2 columns on md)
+    const rows = [
+      [0, 1],
+      [2, 3],
+      [4, 5]
+    ]
+
     rows.forEach((row) => {
-      // Get open cards in this row
-      const openIndicesInRow = row.filter((idx) => openCategories[idx])
+      const openIndices = row.filter((idx) => openSkill === idx)
 
-      if (openIndicesInRow.length >= 2) {
-        // Measure heights of open cards in this row
-        const heights: number[] = []
-
-        openIndicesInRow.forEach((idx) => {
+      if (openIndices.length > 0) {
+        openIndices.forEach((idx) => {
           const cardElement = cardRefs.current[idx]
           if (cardElement) {
-            // Temporarily set height to auto to get natural height
             const originalHeight = cardElement.style.height
             cardElement.style.height = 'auto'
             const naturalHeight = cardElement.scrollHeight
             cardElement.style.height = originalHeight
-
-            heights.push(naturalHeight)
+            newSyncedHeights[idx] = naturalHeight
           }
         })
-
-        if (heights.length > 0) {
-          const maxHeight = Math.max(...heights)
-
-          // Set the max height for all open cards in this row
-          openIndicesInRow.forEach((idx) => {
-            newSyncedHeights[idx] = maxHeight
-          })
-        }
       }
     })
 
     setSyncedHeights(newSyncedHeights)
-  }, [openCategories])
+  }, [openSkill])
 
-  // Measure heights after open state changes and after animations complete
   useEffect(() => {
     if (!mounted) return
 
-    // Clear previous timeout
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
 
-    // Mark as animating
     isAnimatingRef.current = true
 
-    // Wait for the collapsible animation to complete before syncing heights
     timeoutRef.current = setTimeout(() => {
       syncHeights()
       isAnimatingRef.current = false
-    }, 350) // Slightly longer than transition duration for smoothness
+    }, 350)
 
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
-  }, [openCategories, mounted, syncHeights])
+  }, [openSkill, mounted, syncHeights])
 
-  // Also measure on window resize
   useEffect(() => {
     if (!mounted) return
 
@@ -334,19 +182,14 @@ export default function Skills() {
     return () => window.removeEventListener('resize', handleResize)
   }, [mounted, syncHeights])
 
-  const toggleCategory = (index: number) => {
-    setOpenCategories((prev) => {
-      const newState = [...prev]
-      newState[index] = !newState[index]
-      return newState
-    })
+  const toggleSkill = (index: number) => {
+    setOpenSkill(openSkill === index ? null : index)
   }
 
-  // Function to get dynamic height style for a card with smooth transition
   const getCardStyle = useCallback(
     (index: number) => {
       const syncedHeight = syncedHeights[index]
-      if (syncedHeight && openCategories[index]) {
+      if (syncedHeight && openSkill === index) {
         return {
           height: `${syncedHeight}px`,
           transition: 'height 0.35s cubic-bezier(0.4, 0, 0.2, 1)'
@@ -356,29 +199,21 @@ export default function Skills() {
         transition: 'height 0.35s cubic-bezier(0.4, 0, 0.2, 1)'
       }
     },
-    [syncedHeights, openCategories]
+    [syncedHeights, openSkill]
   )
 
   if (!mounted) {
     return null
   }
 
-  const totalSkills = skillCategories.reduce(
-    (acc, category) => acc + category.skills.length,
-    0
-  )
-  const expertSkills = skillCategories[0].skills.length
   const averageProficiency = Math.round(
-    skillCategories
-      .flatMap((c) => c.skills)
-      .reduce((acc, skill) => acc + skill.proficiency, 0) /
-      skillCategories.flatMap((c) => c.skills).length
+    skills.reduce((acc, skill) => acc + skill.proficiency, 0) / skills.length
   )
 
   const handleDownload = () => {
     const link = document.createElement('a')
-    link.href = '/files/my-cv.pdf'
-    link.download = 'Fuad-Seid-CV.pdf'
+    link.href = '/files/Bezawit_Nisrane_CV.pdf'
+    link.download = 'Bezawit_Nisrane_CV.pdf'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -390,38 +225,28 @@ export default function Skills() {
         {/* Header */}
         <div className='mb-16 text-center'>
           <h1 className='mb-4 text-4xl font-bold text-foreground lg:text-5xl'>
-            Skills & Proficiencies
+            Design & Visualization Skills
           </h1>
           <p className='text-xl text-muted-foreground'>
-            A comprehensive overview of my technical expertise
+            Architectural design, 3D modeling, and visualization expertise
           </p>
         </div>
 
         {/* Stats Cards */}
-        <div className='mb-16 grid grid-cols-1 gap-6 md:grid-cols-4'>
+        <div className='mb-16 grid grid-cols-1 gap-6 md:grid-cols-3'>
           <Card className='border-gray-200 p-6 text-center transition-all hover:shadow-md dark:border-gray-800'>
             <div className='mb-3 flex justify-center'>
-              <Code className='h-8 w-8 text-foreground' />
+              <Building className='h-8 w-8 text-foreground' />
             </div>
-            <div className='mb-1 text-2xl font-bold'>{totalSkills}+</div>
+            <div className='mb-1 text-2xl font-bold'>{skills.length}</div>
             <div className='text-sm font-medium text-muted-foreground'>
-              Technologies
+              Software Tools
             </div>
           </Card>
 
           <Card className='border-gray-200 p-6 text-center transition-all hover:shadow-md dark:border-gray-800'>
             <div className='mb-3 flex justify-center'>
-              <Award className='h-8 w-8 text-foreground' />
-            </div>
-            <div className='mb-1 text-2xl font-bold'>{expertSkills}</div>
-            <div className='text-sm font-medium text-muted-foreground'>
-              Expert Skills
-            </div>
-          </Card>
-
-          <Card className='border-gray-200 p-6 text-center transition-all hover:shadow-md dark:border-gray-800'>
-            <div className='mb-3 flex justify-center'>
-              <Brain className='h-8 w-8 text-foreground' />
+              <PenTool className='h-8 w-8 text-foreground' />
             </div>
             <div className='mb-1 text-2xl font-bold'>{averageProficiency}%</div>
             <div className='text-sm font-medium text-muted-foreground'>
@@ -431,9 +256,9 @@ export default function Skills() {
 
           <Card className='border-gray-200 p-6 text-center transition-all hover:shadow-md dark:border-gray-800'>
             <div className='mb-3 flex justify-center'>
-              <Zap className='h-8 w-8 text-foreground' />
+              <Camera className='h-8 w-8 text-foreground' />
             </div>
-            <div className='mb-1 text-2xl font-bold'>3+</div>
+            <div className='mb-1 text-2xl font-bold'>4+</div>
             <div className='text-sm font-medium text-muted-foreground'>
               Years Experience
             </div>
@@ -441,12 +266,12 @@ export default function Skills() {
         </div>
 
         {/* Skills Grid */}
-        <div className='grid grid-cols-1 gap-8 md:grid-cols-2'>
-          {skillCategories.map((category, index) => (
+        <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+          {skills.map((skill, index) => (
             <Collapsible
               key={index}
-              open={openCategories[index]}
-              onOpenChange={() => toggleCategory(index)}
+              open={openSkill === index}
+              onOpenChange={() => toggleSkill(index)}
               className='w-full'
             >
               <div
@@ -460,20 +285,27 @@ export default function Skills() {
                   <CollapsibleTrigger asChild>
                     <CardHeader className='cursor-pointer rounded-t-lg pb-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-900/50'>
                       <div className='flex items-center justify-between'>
-                        <CardTitle className='flex items-center gap-3 text-lg font-semibold'>
-                          <div className='rounded-md bg-gray-100 p-2 text-foreground dark:bg-gray-800'>
-                            {category.icon}
+                        <div className='flex items-center gap-3'>
+                          <div className='flex h-12 w-12 items-center justify-center rounded-md bg-gray-100 text-foreground transition-transform duration-200 group-hover:scale-110 dark:bg-gray-800'>
+                            {skill.icon}
                           </div>
-                          {category.title}
-                        </CardTitle>
+                          <div className='text-left'>
+                            <CardTitle className='text-lg font-semibold'>
+                              {skill.name}
+                            </CardTitle>
+                            <div className='text-sm text-muted-foreground'>
+                              {skill.years} years experience
+                            </div>
+                          </div>
+                        </div>
                         <div className='flex items-center gap-3'>
                           <Badge
                             variant='outline'
                             className='border-gray-300 text-xs dark:border-gray-700'
                           >
-                            {category.skills.length} skills
+                            {skill.proficiency}% proficient
                           </Badge>
-                          {openCategories[index] ? (
+                          {openSkill === index ? (
                             <ChevronUp className='h-5 w-5 text-muted-foreground transition-transform duration-300' />
                           ) : (
                             <ChevronDown className='h-5 w-5 text-muted-foreground transition-transform duration-300' />
@@ -484,38 +316,24 @@ export default function Skills() {
                   </CollapsibleTrigger>
 
                   <CollapsibleContent className='transition-all duration-300 ease-in-out'>
-                    <CardContent className='space-y-6 pt-0'>
-                      {category.skills.map((skill, skillIndex) => (
-                        <div
-                          key={skillIndex}
-                          className='flex items-center justify-between duration-300 animate-in fade-in slide-in-from-top-2'
-                          style={{ animationDelay: `${skillIndex * 50}ms` }}
-                        >
-                          <div className='flex items-center gap-3'>
-                            <div className='flex h-10 w-10 items-center justify-center rounded-md bg-gray-100 text-foreground transition-transform duration-200 hover:scale-110 dark:bg-gray-800'>
-                              {skill.icon}
-                            </div>
-                            <div>
-                              <div className='font-medium text-foreground'>
-                                {skill.name}
-                              </div>
-                              <div className='text-xs text-muted-foreground'>
-                                {skill.years} years
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className='flex flex-col items-end gap-1'>
-                            <span className='text-sm font-medium text-muted-foreground'>
-                              {skill.proficiency}%
-                            </span>
-                            <ProficiencyBar
-                              proficiency={skill.proficiency}
-                              className='w-20'
-                            />
-                          </div>
+                    <CardContent className='space-y-4 pt-0'>
+                      <div className='rounded-lg bg-gray-50 p-4 dark:bg-gray-900/50'>
+                        <p className='text-sm text-muted-foreground'>
+                          {skill.description}
+                        </p>
+                      </div>
+                      
+                      <div className='space-y-2'>
+                        <div className='flex items-center justify-between'>
+                          <span className='text-sm font-medium text-muted-foreground'>
+                            Proficiency Level
+                          </span>
+                          <span className='text-sm font-semibold text-foreground'>
+                            {skill.proficiency}%
+                          </span>
                         </div>
-                      ))}
+                        <ProficiencyBar proficiency={skill.proficiency} />
+                      </div>
                     </CardContent>
                   </CollapsibleContent>
                 </Card>
@@ -527,7 +345,7 @@ export default function Skills() {
         {/* CTA Section */}
         <div className='mt-16 text-center'>
           <p className='mb-6 text-lg text-muted-foreground'>
-            Interested in working together?
+            Looking for architectural design expertise?
           </p>
           <Button
             onClick={handleDownload}
@@ -536,7 +354,7 @@ export default function Skills() {
             variant='default'
           >
             <Download className='mr-2 h-4 w-4 transition-transform group-hover:translate-y-1' />
-            Download CV
+            Download Resume
           </Button>
         </div>
       </div>

@@ -13,7 +13,7 @@ const stats = [
   {
     icon: Briefcase,
     title: 'Completed',
-    value: '20+ Projects'
+    value: '15+ Projects'
   },
   {
     icon: Headphones,
@@ -25,8 +25,8 @@ const stats = [
 export default function AboutMe() {
   const handleDownload = () => {
     const link = document.createElement('a')
-    link.href = '/files/my-cv.pdf'
-    link.download = 'Fuad-Seid-CV.pdf'
+    link.href = '/files/Bezawit_Nisrane_CV.pdf'
+    link.download = 'Bezawit_Nisrane_CV.pdf'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -48,7 +48,7 @@ export default function AboutMe() {
           <div className='flex justify-center'>
             <div className='relative h-96 w-80 overflow-hidden rounded-2xl bg-muted'>
               <Image
-                src='/images/authors/about.png'
+                src='/images/authors/about.jpg'
                 alt='Profile'
                 fill
                 className='object-cover'
@@ -82,16 +82,12 @@ export default function AboutMe() {
             {/* Description */}
             <div className='space-y-4 leading-relaxed text-muted-foreground'>
               <p>
-                I am a Full-Stack Developer with expertise in building web
-                applications using modern technologies, including the MERN stack
-                (MongoDB, Express.js, React, Node.js), Next.js, Laravel, and
-                Flutter. I have a strong passion for learning new technologies
-                and solving real-life problems through innovative solutions.
+                I am an Interior Designer with expertise in creating functional and aesthetically pleasing spaces. I have a strong passion for design and solving real-life problems through innovative solutions.
               </p>
               <p>
-                With a commitment to best practices in software development, I
+                With a commitment to best practices in design, I
                 focus on creating seamless user experiences and efficient
-                server-side applications. I thrive in collaborative
+                design solutions. I thrive in collaborative
                 environments, working with cross-functional teams to deliver
                 high-quality projects on time.
               </p>

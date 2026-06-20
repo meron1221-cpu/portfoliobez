@@ -12,34 +12,22 @@ import {
   Twitter,
   Youtube
 } from 'lucide-react'
-import authorImage from '@/public/images/authors/fuad.jpg'
+import authorImage from '@/public/images/authors/bez.jpg'
 
 const socialLinks = [
+
   {
-    href: 'https://github.com/Fuadseid',
-    label: 'GitHub',
-    icon: Github
-  },
-  {
-    href: 'https://linkedin.com/in/fuad-seid-8b61322a9',
+    href: 'https://www.linkedin.com/in/bezawit-nisrane-2a816b2a1/?skipRedirect=true',
     label: 'LinkedIn',
     icon: Linkedin
   },
+
   {
-    href: 'https://x.com/Fuad745164',
-    label: 'Twitter',
-    icon: Twitter
-  },
-  {
-    href: 'mailto:fuaddbus@gmail.com',
+    href: 'mailto:Bezawitnisrane23@gmail.com',
     label: 'Email',
     icon: Mail
   },
-  {
-    href: 'https://youtube.com/@fuadseid9173',
-    label: 'YouTube',
-    icon: Youtube
-  }
+
 ]
 
 const popin = Poppins({
@@ -51,8 +39,8 @@ const popin = Poppins({
 export default function Intro() {
   const handleDownload = () => {
     const link = document.createElement('a')
-    link.href = '/files/my-cv.pdf'
-    link.download = 'Fuad-Seid-CV.pdf'
+    link.href = '/files/Bezawit_Nisrane_CV.pdf'
+    link.download = 'Bezawit_Nisrane_CV.pdf'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -60,7 +48,7 @@ export default function Intro() {
 
   const handleContactClick = () => {
     window.location.href =
-      'mailto:fuaddbus@gmail.com?subject=Portfolio%20Inquiry'
+      'mailto:Bezawitnisrane23@gmail.com?subject=Portfolio%20Inquiry'
   }
   return (
     <section
@@ -92,21 +80,17 @@ export default function Intro() {
             <h1
               className={`mb-4 ${popin.className} bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-4xl font-bold text-transparent lg:text-6xl`}
             >
-              Fuad Seid
+              Bezawit Nisrane
             </h1>
 
             {/* Title */}
             <h2 className='mb-6 text-xl font-medium text-muted-foreground lg:text-2xl'>
-              Fullstack Developer
+              Interior Designer
             </h2>
 
             {/* Description */}
             <p className='mb-8 max-w-2xl text-lg leading-relaxed text-muted-foreground'>
-              Full-Stack Developer Experienced in building dynamic web
-              applications using MERN stack, Next.js, Laravel, React, Flutter,
-              and Livewire. Skilled in developing scalable, efficient, and
-              modern frontend & backend solutions, with additional experience in
-              AI/ML integration.
+           A passionate and detailed oriented interior designer with a strong background in creating functional and aesthetically pleasing spaces. I have a proven track record of delivering innovative design solutions that meet clients' needs and exceed their expectations. My expertise includes space planning, color theory, material selection, and project management. I am dedicated to transforming spaces into inspiring environments that enhance the quality of life for my clients.
             </p>
 
             {/* Buttons */}

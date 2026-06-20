@@ -7,7 +7,7 @@ export default function Header() {
       <nav className='mx-auto flex w-full max-w-6xl items-center justify-between px-4'>
         <div>
           <Link href='/' className='font-serif text-2xl font-bold'>
-            FUAD
+            Bezawit
           </Link>
         </div>
 

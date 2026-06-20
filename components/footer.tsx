@@ -82,22 +82,11 @@ export default function Footer() {
       <div className='container mx-auto max-w-3xl px-4'>
         <div className='md:flex md:items-center md:justify-between'>
           <div className='flex justify-center space-x-6 md:order-2'>
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                target='_blank'
-                rel='noreferrer noopener'
-                className='text-muted-foreground hover:text-foreground'
-              >
-                <span className='sr-only'>{item.name}</span>
-                <item.icon aria-hidden='true' className='h-5 w-5' />
-              </a>
-            ))}
+           
           </div>
           <div className='mt-8 md:order-1 md:mt-0'>
             <p className='text-muted-foreground text-center text-xs leading-5'>
-              &copy; {new Date().getFullYear()} Fuad&apos;s Portfolio. All rights
+              &copy; {new Date().getFullYear()} Bezawit&apos;s Portfolio. All rights
               reserved.
             </p>
           </div>

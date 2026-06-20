@@ -29,15 +29,31 @@ export default function ContactForm() {
   })
 
   const processForm: SubmitHandler<Inputs> = async (data) => {
-    const result = await sendEmail(data)
+    console.log('📤 Submitting form data:', data)
+    
+    try {
+      const result = await sendEmail(data)
+      console.log('📥 Result from server:', result)
 
-    if (result?.error) {
+      if (result?.error) {
+        // Show the actual error message
+        const errorMessage = typeof result.error === 'string' 
+          ? result.error 
+          : 'An error occurred! Please try again.'
+        
+        console.error('❌ Form error:', errorMessage)
+        toast.error(errorMessage)
+        return
+      }
+
+      if (result?.success) {
+        toast.success('Message sent successfully!')
+        reset()
+      }
+    } catch (error) {
+      console.error('❌ Form submission error:', error)
       toast.error('An error occurred! Please try again.')
-      return
     }
-
-    toast.success('Message sent successfully!')
-    reset()
   }
 
   return (
