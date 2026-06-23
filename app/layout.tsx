@@ -14,8 +14,8 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Fuad Seid | Portfolio',
-  description: 'Portfolio of Fuad Seid, a software engineer specializing in web and ai development.',
+  title: 'Bezawit Nisrane | Portfolio',
+  description: 'Portfolio of Bezawit Nisrane, a software engineer specializing in web and ai development.',
 }
 
 export default function RootLayout({
